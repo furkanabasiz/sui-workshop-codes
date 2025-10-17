@@ -9,6 +9,14 @@ export const createHero = (packageId: string, name: string, imageUrl: string, po
   // Hints: 
   // - Use tx.pure.string() for string arguments
   // - Use tx.pure.u64() for number arguments
+  tx.moveCall({
+    target:`${packageId}::hero::create_hero`,
+    arguments: [
+      tx.pure.string(name),
+      tx.pure.string(imageUrl),
+      tx.pure.u64(power)
+    ]
+  })
   
   return tx;
 };
